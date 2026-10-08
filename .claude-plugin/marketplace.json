@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "glance",
+  "description": "glance: AI output that humans understand at a glance.",
+  "owner": {
+    "name": "Merlin Ostermann"
+  },
+  "plugins": [
+    {
+      "name": "glance",
+      "description": "Answer first, short plain sentences, diagrams for structure, HTML pages for reports, and /glance:deeper to expand one direction.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
