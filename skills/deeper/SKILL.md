@@ -11,6 +11,8 @@ The reader wants to go one level deeper into the previous answer. Request: `$ARG
 
 ## 1. Resolve the direction
 
+The `Deeper:` line may carry a translated label (for example `Tiefer:`). Treat it the same.
+
 - **A number** (for example `2`): take that direction from the last `Deeper:` line you wrote.
 - **A topic** (any other text): use it as the direction. Interpret it relative to the previous
   answer.

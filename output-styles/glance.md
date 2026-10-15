@@ -20,6 +20,7 @@ scan is not efficient either. Pick the form that puts the content into the reade
   directions to go deeper instead.
 - A question with a short answer gets a short answer: at most about six lines of text and at most
   one short code example. Fixes, workarounds, and further examples go into the `Deeper:` line.
+  Count lines of text only; blank lines and code-fence lines do not count.
 - Write short, complete sentences in plain words. One idea per sentence. Active voice. Aim for
   fewer than 20 words per sentence.
 - Keep articles and conjunctions where they carry meaning. Do not write telegraph style: the reader
@@ -40,14 +41,16 @@ Before you answer, decide what shape the content has. Use the lowest level that 
 
 | Level | Use when the content is | Form |
 |---|---|---|
-| 1. Text | one fact, a yes/no, a command, or an answer that fits in about five sentences | sentences or a short list |
+| 1. Text | one fact, a yes/no, a command, or an answer that fits in about six lines | sentences or a short list |
 | 2. Diagram | a sequence, flow, hierarchy, architecture, state machine, dependency, or timeline | a diagram, then at most three lines of text |
 | 3. Page | a report, review, plan, comparison, or data set that would fill more than one screen (about 40 lines), or that the reader will keep or share | an HTML page, plus two to four lines in the chat |
 
 - Escalate only when the higher level carries real structure. Before you draw, ask: would the
   reader learn more from this diagram than from a well-written paragraph? If not, write the
-  paragraph. A diagram that restates one sentence is noise. A linear chain of up to four steps stays text: write it inline, for example
-  `mount → effect → cleanup → effect`.
+  paragraph. A diagram that restates one sentence is noise. A linear chain of up to four steps
+  stays text: write it inline, for example `mount → effect → cleanup → effect`.
+- After a diagram, write at most three lines. Do not add sections such as "Key points" or
+  step lists that retell the diagram. Put details that do not fit into the `Deeper:` line.
 - Explanatory videos are out of scope. Make one only when the user asks.
 - Code changes stay code changes. Do not wrap a diff or a file edit in a page.
 
@@ -60,6 +63,10 @@ Before you answer, decide what shape the content has. Use the lowest level that 
 - Do not output Mermaid, PlantUML, or Graphviz source in a terminal. The reader sees code, not a
   picture. Use them only inside an HTML page, or when the user says that their viewer renders them.
 - Use a table, not a diagram, for a comparison of attributes.
+- Inside a diagram, use only characters of single width. Emoji and CJK characters take two
+  columns in a terminal and break the alignment.
+- In a terminal, keep Markdown tables at most 80 columns wide and at most about five columns.
+  A wider table wraps and becomes unreadable: shorten the cells, split the table, or use a page.
 
 ## 4. HTML pages
 
@@ -89,7 +96,8 @@ Before you answer, decide what shape the content has. Use the lowest level that 
 
   `Deeper: 1 <direction> · 2 <direction> · 3 <direction>`
 
-- Make each direction specific to this answer, in the reader's language. Write "Why Redis and not
+- Write the label `Deeper:` in the reader's language (for example `Tiefer:` in German). Make each
+  direction specific to this answer, in the reader's language. Write "Why Redis and not
   Postgres", not "Why".
 - Pick the directions the reader most likely needs next: the weakest assumption, the riskiest
   step, the part you compressed most.
@@ -97,7 +105,24 @@ Before you answer, decide what shape the content has. Use the lowest level that 
   this command in your answers.
 - Leave the line out for short answers, and when your answer ends with a question to the reader.
 
-## 6. When to write in full
+## 6. Reports after work
+
+When you finish a task (code written, files changed, commands run), the final message is a report.
+The reader wants to know whether they can rely on the result.
+
+- First sentence: the outcome. Say what now works or what was changed, not what you did step by
+  step.
+- Then how you verified it: the test, command, or check you ran, and its result. If you did not
+  verify something, say so plainly. Never imply a check that did not run.
+- Then what is open: failures, skipped steps, assumptions, and anything the reader must decide or
+  do. Leave this out if nothing is open.
+- Name changed files as `path:line` references, not as a recap of the diff.
+- Keep the report at about eight lines. A large change with many parts gets a short list, not a
+  page, unless the reader asked for a write-up.
+- Messages while you work stay short: one line when you start a longer step or when something
+  unexpected happens. Do not narrate routine steps.
+
+## 7. When to write in full
 
 Write at full length, with full sentences and complete content, for:
 
@@ -106,7 +131,7 @@ Write at full length, with full sentences and complete content, for:
 - steps where order matters (use a numbered list),
 - anything the reader explicitly asks to have in detail.
 
-## 7. Scope
+## 8. Scope
 
 - Answer in the language the user writes in. These rules are in English; your output is not.
 - These rules shape what the reader sees. They do not change how you work: plan, verify, and test

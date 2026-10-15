@@ -34,6 +34,8 @@ Deeper: 1 <specific direction> · 2 <specific direction> · 3 <specific directio
 - **HTML pages:** reports, reviews, plans, and comparisons become one self-contained page (light and
   dark mode, readable on a phone). If your environment can publish pages (for example artifacts),
   glance uses that. Otherwise it writes the file to your temp directory, never into your project.
+- **Reports after work:** when a task is done, the final message states the outcome first, then
+  how it was verified, then what is still open. No step-by-step narration.
 - **Go deeper:** larger answers end with two to four directions that are specific to the answer.
   Run `/glance:deeper 2` or `/glance:deeper <topic>` to expand exactly one of them.
 
@@ -90,7 +92,7 @@ the score difference:
 claude plugin eval ./
 ```
 
-Result of the last run (11 cases, 3 runs per case and arm, Claude Sonnet as model and judge,
+Result of the last full run (11 cases, version 0.1, 3 runs per case and arm, Claude Sonnet as model and judge,
 2026-10-08):
 
 | | with glance | without | Δ |
@@ -104,7 +106,7 @@ treat single numbers as indicative.
 
 ## Scope
 
-- Version 0.1 targets Claude Code.
+- Version 0.2 targets Claude Code.
 - Explanatory videos are out of scope. The model makes one only if you ask.
 - Output styles apply to the main conversation. Subagents keep their own instructions, which is
   fine: their output goes to the model, not to you.

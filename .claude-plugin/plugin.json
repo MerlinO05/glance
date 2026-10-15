@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "glance",
   "displayName": "glance",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Output for humans who must understand fast: answer first, short plain sentences, diagrams for structure, an HTML page for reports, and /glance:deeper to expand one direction.",
   "author": {
     "name": "Merlin Ostermann"
